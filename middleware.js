@@ -1,5 +1,5 @@
-const {ExpressError} = require("./errors");
-const {queryToArray} = require("./helpers")
+const { ExpressError } = require("./errors");
+const { queryToArray } = require("./helpers");
 
 function checkForEmpty(req, res, next) {
   try {
@@ -30,4 +30,4 @@ function validateInputCreateArray(req, res, next) {
   return next();
 }
 
-module.exports = {checkForEmpty, validateInputCreateArray};
+module.exports = { checkForEmpty, validateInputCreateArray };

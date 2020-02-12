@@ -8,29 +8,23 @@ const {checkForEmpty, validateInputCreateArray} = require("./middleware");
 
 app.use(express.json());
 
-app.use(["/mean", "/median", "/mode"], checkForEmpty, validateInputCreateArray);
-
-
-app.get("/mean", function (req, res) {
+app.get("/mean", checkForEmpty, validateInputCreateArray, function (req, res) {
   let nums = res.locals.nums;
-
   let mean = calcMean(nums);
   return res.json({ operation: "mean", value: mean });
-
 });
 
-app.get("/mode", function (req, res) {
+app.get("/mode", checkForEmpty, validateInputCreateArray, function (req, res) {
   let nums = res.locals.nums;
-
   let mode = calcMode(nums);
   return res.json({ operation: "mode", value: mode });
 });
 
-app.get("/median", function (req, res) {
+app.get("/median", checkForEmpty, validateInputCreateArray, function (req, res) {
   let nums = res.locals.nums;
-
   nums = nums.sort((a, b) => a - b);
   let median = calcMedian(nums);
+
   return res.json({ operation: "median", value: median });
 });
 
